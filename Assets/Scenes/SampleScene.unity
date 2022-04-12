@@ -1248,6 +1248,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 390529282}
+  - component: {fileID: 390529284}
+  - component: {fileID: 390529283}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1270,6 +1272,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &390529283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390529281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99a62e854c26f294d988ca9ce79e4cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  jump_force: 7
+--- !u!143 &390529284
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 390529281}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.8
+  m_Radius: 0.5
+  m_SlopeLimit: 55
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!1001 &438169547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1603,7 +1637,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 517194761}
-  - component: {fileID: 517194762}
+  - component: {fileID: 517194763}
   m_Layer: 0
   m_Name: Root
   m_TagString: Untagged
@@ -1626,24 +1660,28 @@ Transform:
   m_Father: {fileID: 390529282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &517194762
-CharacterController:
+--- !u!114 &517194763
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 517194760}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.8
-  m_Radius: 0.5
-  m_SlopeLimit: 55
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.9, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919620240b751d24f8f20f881a5a0d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRoot: {fileID: 390529282}
+  lookRoot: {fileID: 517194761}
+  invert: 0
+  can_unlock: 1
+  sensibility: 2
+  smooth_step: 10
+  smooth_weight: 0.4
+  roll_angle: 0.3
+  roll_speed: 3
+  default_look_limits: {x: -70, y: 80}
 --- !u!1001 &521999993
 PrefabInstance:
   m_ObjectHideFlags: 0
