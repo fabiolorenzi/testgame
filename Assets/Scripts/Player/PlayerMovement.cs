@@ -26,6 +26,15 @@ public class PlayerMovement : MonoBehaviour
     {
         MovePlayer();
         PlayerJump();
+
+        if (!character_controller.isGrounded)
+        {
+            player_anim.SetBool("isNotGrounded", true);
+        }
+        else
+        {
+            player_anim.SetBool("isNotGrounded", false);
+        }
     }
 
     public void MovePlayer()
@@ -46,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
 
         ApplyGravity();
         character_controller.Move(move_directions);
+
+        // this code below is because the body has to stay "in" the player component and not walk around casually
         playerBody.position = transform.position;
     }
 
