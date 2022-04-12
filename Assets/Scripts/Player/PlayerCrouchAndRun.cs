@@ -27,11 +27,14 @@ public class PlayerCrouchAndRun : MonoBehaviour
     private float sprint_steps_distance = 0.25f;
     private float crouch_steps_distance = 0.5f;
 
+    private Animator player_anim;
+
     public void Awake()
     {
         playerMovement = GetComponent<PlayerMovement>();
         player_footsteps = GetComponentInChildren<PlayerFootsteps>();
         lookRoot = transform.GetChild(0);
+        player_anim = GetComponentInChildren<Animator>();
     }
 
     public void Start()
@@ -55,6 +58,7 @@ public class PlayerCrouchAndRun : MonoBehaviour
             player_footsteps.steps_distance = sprint_steps_distance;
             player_footsteps.volume_min = sprint_volume;
             player_footsteps.volume_max = sprint_volume;
+            player_anim.SetBool("isRunning", true);
         }
 
         if (Input.GetKeyUp(KeyCode.LeftShift) && !is_crouching)
@@ -63,6 +67,7 @@ public class PlayerCrouchAndRun : MonoBehaviour
             player_footsteps.steps_distance = walk_steps_distance;
             player_footsteps.volume_min = walk_volume_min;
             player_footsteps.volume_max = walk_volume_max;
+            player_anim.SetBool("isRunning", false);
         }
     }
 
