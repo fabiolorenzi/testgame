@@ -46,6 +46,8 @@ public class PlayerFootsteps : MonoBehaviour
                 footstep_sound.volume = Random.Range(volume_min, volume_max);
                 footstep_sound.clip = footstep_clip[0];
                 footstep_sound.Play();
+
+                accumulate_distance = 0f;
             }
         }
         else

@@ -11,7 +11,7 @@ public class PlayerCrouchAndRun : MonoBehaviour
     public float move_speed = 4f;
     public float crouch_speed = 1.5f;
 
-    private float standHeight = 1.6f;
+    private float standHeight = 1.8f;
     private float crouchHeight = 1f;
 
     private bool is_crouching;
