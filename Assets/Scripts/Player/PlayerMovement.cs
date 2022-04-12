@@ -11,9 +11,15 @@ public class PlayerMovement : MonoBehaviour
     public float jump_force = 7f;
     private float vertical_velocity;
 
+    private Animator player_anim;
+
+    [SerializeField]
+    private Transform playerBody;
+
     public void Awake()
     {
         character_controller = GetComponent<CharacterController>();
+        player_anim = GetComponentInChildren<Animator>();
     }
 
     public void Update()
@@ -25,10 +31,22 @@ public class PlayerMovement : MonoBehaviour
     public void MovePlayer()
     {
         move_directions = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        
+        // this code below is to understand if the player is walking and so play an animation or another one
+        if (move_directions.x != 0f || move_directions.y != 0f || move_directions.z != 0f)
+        {
+            player_anim.SetBool("isWalking", true);
+        }
+        else
+        {
+            player_anim.SetBool("isWalking", false);
+        }
+
         move_directions = transform.TransformDirection(move_directions * speed * Time.deltaTime);
 
         ApplyGravity();
         character_controller.Move(move_directions);
+        playerBody.position = transform.position;
     }
 
     public void ApplyGravity()
