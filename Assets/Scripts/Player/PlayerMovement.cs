@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         // this code below is because the body has to stay "in" the player component and not walk around casually
         playerBody.position = transform.position;
+        playerBody.rotation = transform.rotation;
     }
 
     public void ApplyGravity()
