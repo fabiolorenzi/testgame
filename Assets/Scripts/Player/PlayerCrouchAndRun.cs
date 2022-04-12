@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCrouchAndRun : MonoBehaviour
 {
-    private PlayerMovement player_movement;
+    private PlayerMovement playerMovement;
     private Transform lookRoot;
 
     public float sprint_speed = 9f;
@@ -29,8 +29,65 @@ public class PlayerCrouchAndRun : MonoBehaviour
 
     public void Awake()
     {
-        player_movement = GetComponent<PlayerMovement>();
+        playerMovement = GetComponent<PlayerMovement>();
         player_footsteps = GetComponentInChildren<PlayerFootsteps>();
         lookRoot = transform.GetChild(0);
+    }
+
+    public void Start()
+    {
+        player_footsteps.volume_min = walk_volume_min;
+        player_footsteps.volume_max = walk_volume_max;
+        player_footsteps.steps_distance = walk_steps_distance;
+    }
+
+    public void Update()
+    {
+        Sprint();
+        Crouch();
+    }
+
+    public void Sprint()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift) && !is_crouching)
+        {
+            playerMovement.speed = sprint_speed;
+            player_footsteps.steps_distance = sprint_steps_distance;
+            player_footsteps.volume_min = sprint_volume;
+            player_footsteps.volume_max = sprint_volume;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift) && !is_crouching)
+        {
+            playerMovement.speed = move_speed;
+            player_footsteps.steps_distance = walk_steps_distance;
+            player_footsteps.volume_min = walk_volume_min;
+            player_footsteps.volume_max = walk_volume_max;
+        }
+    }
+
+    public void Crouch()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (is_crouching)
+            {
+                lookRoot.localPosition = new Vector3(0f, standHeight, 0f);
+                playerMovement.speed = move_speed;
+                is_crouching = false;
+                player_footsteps.steps_distance = walk_steps_distance;
+                player_footsteps.volume_min = walk_volume_min;
+                player_footsteps.volume_max = walk_volume_max;
+            }
+            else
+            {
+                lookRoot.localPosition = new Vector3(0f, crouchHeight, 0f);
+                playerMovement.speed = crouch_speed;
+                is_crouching = true;
+                player_footsteps.steps_distance = crouch_steps_distance;
+                player_footsteps.volume_min = crouch_volume;
+                player_footsteps.volume_max = crouch_volume;
+            }
+        }
     }
 }

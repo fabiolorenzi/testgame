@@ -4083,6 +4083,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbb07bbb3284544fac4c852064c47c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  footstep_clip:
+  - {fileID: 8300000, guid: c0104e2da1992a3479f8c0fe5ac0d804, type: 3}
+  volume_min: 0
+  volume_max: 0
+  step_distance: 0
 --- !u!82 &1267531497
 AudioSource:
   m_ObjectHideFlags: 0
