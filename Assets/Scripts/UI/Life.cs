@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class Life : MonoBehaviour
 {
-    public static TextMeshProUGUI lifeText;
+    private static Slider slider;
 
     public void Awake()
     {
-        lifeText = GetComponent<TextMeshProUGUI>();
+        slider = GetComponent<Slider>();
     }
 
-    public static void UpdateLife(int points)
+    public static void UpdateLife(float points)
     {
-        lifeText.text = "Life: " + points.ToString();
+        slider.value = points / 10f;
     }
 }

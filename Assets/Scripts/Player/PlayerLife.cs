@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
-    private int lifePoints = 10;
+    public static float lifePoints = 10;
 
     public void Start()
     {
-        Life.UpdateLife(10);
+        Life.UpdateLife(lifePoints);
     }
 }
