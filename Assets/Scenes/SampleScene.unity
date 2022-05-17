@@ -1700,7 +1700,7 @@ MonoBehaviour:
   smooth_weight: 0.4
   roll_angle: 0.3
   roll_speed: 3
-  default_look_limits: {x: -70, y: 80}
+  default_look_limits: {x: -70, y: 55}
 --- !u!1001 &521999993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3325,7 +3325,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: 0.01
   far clip plane: 1000
   field of view: 60
   orthographic: 0
