@@ -46,7 +46,7 @@ public class PlayerShoot : MonoBehaviour
 
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            if (hit.transform.name == "Box")
+            if (hit.transform.tag == "Box")
             {
                 Box boxScript = hit.transform.GetComponent<Box>();
                 boxScript.lifePoints -= damage;
