@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField]
+    private float damage = 10f;
+
     private Animator player_anim;
     private AudioSource audioController;
 
@@ -23,6 +26,18 @@ public class PlayerAttack : MonoBehaviour
             player_anim.SetTrigger("Attack");
             audioController.clip = attackSound;
             audioController.Play();
+        }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (player_anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            if (collision.gameObject.name == "Box")
+            {
+                Box boxScript = collision.gameObject.GetComponent<Box>();
+                boxScript.lifePoints -= damage;
+            }
         }
     }
 }
