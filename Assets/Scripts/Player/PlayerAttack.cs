@@ -29,7 +29,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnControllerColliderHit(ControllerColliderHit collision)
     {
         if (player_anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
